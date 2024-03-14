@@ -50,7 +50,7 @@ int main() {
 			employes[i].enterName(auxName);
 			employes[i].enterSalary(auxSalary);
 
-			inputFile << employes[i];
+			inputFile << employes[i]; //Como escribo una instancia en un archivo de texto
 		}
 		
 		inputFile.close();
@@ -62,7 +62,7 @@ int main() {
 		int i = 0;
 		while (i < 5) {
 
-			
+			//Como leo un objeto de un archivo de texto
 
 			i++;
 		}

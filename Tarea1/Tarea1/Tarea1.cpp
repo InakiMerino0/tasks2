@@ -25,11 +25,6 @@ public:
 	float getSalary() {
 		return salary;
 	}
-
-	bool instance() {
-		return true;
-	}
-	
 };
 
 int main() {
@@ -39,8 +34,8 @@ int main() {
 	float auxSalary = 0;
 
 	//crea el archivo archivo.txt, referenciado con el objeto archivoEntrada, al ser ofstream permite la entrada de datos
-	ofstream inputFile("archivo.txt");
-	if (inputFile.is_open()) {
+	fstream binaryStream("file.dat", ios::binary | ios::in | ios::out | ios::app);
+	if (binaryStream.is_open()) {
 
 		for (int i = 0; i < 5; i++) {
 			cout << "Ingrese nombre del empleado numero: " << (i + 1);
@@ -50,10 +45,11 @@ int main() {
 			employes[i].enterName(auxName);
 			employes[i].enterSalary(auxSalary);
 
-			inputFile << employes[i]; //Como escribo una instancia en un archivo de texto
+			seekp(0, ios::end);
+			binaryStream.write(employes[i]); //Como escribo una instancia en un archivo de texto
 		}
 		
-		inputFile.close();
+		binaryStream.close();
 	}
 
 	//if stream permite la lectura de archivo.txt, archivoSalida es el objeto por el que se lo referencia
